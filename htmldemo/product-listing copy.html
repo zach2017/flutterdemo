@@ -66,10 +66,6 @@
                 <h3 class="text-lg font-medium text-gray-700">Delivery</h3>
                 <label class="block mt-2"><input type="checkbox" id="deliveryFilter" class="mr-2"> Delivery Available</label>
             </div>
-            <div class="mb-6">
-                <h3 class="text-lg font-medium text-gray-700">Cooked</h3>
-                <label class="block mt-2"><input type="checkbox" id="cookedFilter" class="mr-2"> Cooked Available</label>
-            </div>
         </aside>
 
         <!-- Product Grid -->
@@ -111,14 +107,14 @@
 
     <!-- JavaScript -->
     <script>
-        // Updated JSON string with cookedOption field
+        // Updated JSON string with deliveryOption field
         const produceData = JSON.parse(`[
-            {"name": "Free Tomatoes", "category": "Vegetables", "price": "Free", "distance": 2, "location": "Sunny Hill Garden", "fromGarden": "Sunny Hill Community Plot", "deliveryOption": true, "cookedOption": false, "image": "https://images.unsplash.com/photo-1571172964276-91faaa25dfa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
-            {"name": "Apples", "category": "Fruits", "price": "$1/lb", "distance": 3, "location": "Maple Grove", "fromGarden": "Maple Grove Orchard", "deliveryOption": false, "cookedOption": true, "image": "https://images.unsplash.com/photo-1598178570436-24d106e39934?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
-            {"name": "Organic Carrots", "category": "Vegetables", "price": "Free", "distance": 1, "location": "Green Patch", "fromGarden": "Green Patch Co-op", "deliveryOption": true, "cookedOption": false, "image": "https://images.unsplash.com/photo-1615485925608-5d63e3359b47?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
-            {"name": "Strawberries", "category": "Fruits", "price": "$2/pint", "distance": 4, "location": "Berry Lane", "fromGarden": "Berry Lane Farm", "deliveryOption": false, "cookedOption": true, "image": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
-            {"name": "Fresh Spinach", "category": "Vegetables", "price": "Free", "distance": 2, "location": "Sunny Hill Garden", "fromGarden": "Sunny Hill Community Plot", "deliveryOption": true, "cookedOption": false, "image": "https://images.unsplash.com/photo-1590779033106-b1ca66c7f8ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
-            {"name": "Zucchini", "category": "Vegetables", "price": "$0.50/each", "distance": 1, "location": "Green Patch", "fromGarden": "Green Patch Co-op", "deliveryOption": false, "cookedOption": true, "image": "https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"}
+            {"name": "Free Tomatoes", "category": "Vegetables", "price": "Free", "distance": 2, "location": "Sunny Hill Garden", "fromGarden": "Sunny Hill Community Plot", "deliveryOption": true, "image": "https://images.unsplash.com/photo-1571172964276-91faaa25dfa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
+            {"name": "Apples", "category": "Fruits", "price": "$1/lb", "distance": 3, "location": "Maple Grove", "fromGarden": "Maple Grove Orchard", "deliveryOption": false, "image": "https://images.unsplash.com/photo-1598178570436-24d106e39934?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
+            {"name": "Organic Carrots", "category": "Vegetables", "price": "Free", "distance": 1, "location": "Green Patch", "fromGarden": "Green Patch Co-op", "deliveryOption": true, "image": "https://images.unsplash.com/photo-1615485925608-5d63e3359b47?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
+            {"name": "Strawberries", "category": "Fruits", "price": "$2/pint", "distance": 4, "location": "Berry Lane", "fromGarden": "Berry Lane Farm", "deliveryOption": false, "image": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
+            {"name": "Fresh Spinach", "category": "Vegetables", "price": "Free", "distance": 2, "location": "Sunny Hill Garden", "fromGarden": "Sunny Hill Community Plot", "deliveryOption": true, "image": "https://images.unsplash.com/photo-1590779033106-b1ca66c7f8ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"},
+            {"name": "Zucchini", "category": "Vegetables", "price": "$0.50/each", "distance": 1, "location": "Green Patch", "fromGarden": "Green Patch Co-op", "deliveryOption": false, "image": "https://images.unsplash.com/photo-1607305387299-a3d9611cd469?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80"}
         ]`);
 
         // DOM elements
@@ -131,7 +127,6 @@
         const veggieFilter = document.getElementById('veggieFilter');
         const distanceFilter = document.getElementById('distanceFilter');
         const deliveryFilter = document.getElementById('deliveryFilter');
-        const cookedFilter = document.getElementById('cookedFilter');
         const viewCartBtn = document.getElementById('viewCartBtn');
         const cartCount = document.getElementById('cartCount');
         const cartModal = document.getElementById('cartModal');
@@ -146,7 +141,7 @@
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         updateCartCount();
 
-        // Render products with cookedOption
+        // Render products with deliveryOption
         function renderProducts(products) {
             productGrid.innerHTML = '';
             products.forEach(product => {
@@ -158,7 +153,6 @@
                     <p class="text-gray-600 text-sm">${product.location} - ${product.distance} mi</p>
                     <p class="text-gray-500 text-sm">From Garden: ${product.fromGarden}</p>
                     ${product.deliveryOption ? '<p class="text-green-600 text-sm">Delivery Available</p>' : ''}
-                    ${product.cookedOption ? '<p class="text-blue-600 text-sm">Cooked Available</p>' : ''}
                     <p class="text-green-600 font-semibold">${product.price}</p>
                     <button class="mt-2 w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 add-to-cart" data-name="${product.name}">
                         ${product.price === 'Free' ? 'Request' : 'Add to Cart'}
@@ -180,7 +174,7 @@
             });
         }
 
-        // Filter and search logic with cooked filter
+        // Filter and search logic with delivery filter
         function filterProducts() {
             const searchTerm = searchInput.value.toLowerCase();
             const isFree = freeFilter.checked;
@@ -189,7 +183,6 @@
             const isVeggie = veggieFilter.checked;
             const maxDistance = distanceFilter.value ? parseInt(distanceFilter.value) : Infinity;
             const isDelivery = deliveryFilter.checked;
-            const isCooked = cookedFilter.checked;
 
             const filtered = produceData.filter(product => {
                 const matchesSearch = product.name.toLowerCase().includes(searchTerm);
@@ -197,8 +190,7 @@
                 const matchesCategory = (!isFruit && !isVeggie) || (isFruit && product.category === 'Fruits') || (isVeggie && product.category === 'Vegetables');
                 const matchesDistance = product.distance <= maxDistance;
                 const matchesDelivery = !isDelivery || (isDelivery && product.deliveryOption);
-                const matchesCooked = !isCooked || (isCooked && product.cookedOption);
-                return matchesSearch && matchesPrice && matchesCategory && matchesDistance && matchesDelivery && matchesCooked;
+                return matchesSearch && matchesPrice && matchesCategory && matchesDistance && matchesDelivery;
             });
 
             renderProducts(filtered);
@@ -209,7 +201,7 @@
             cartCount.textContent = cart.length;
         }
 
-        // Render cart items with cookedOption
+        // Render cart items with deliveryOption
         function renderCart() {
             cartItems.innerHTML = '';
             if (cart.length === 0) {
@@ -224,7 +216,6 @@
                             <p class="text-gray-600 text-sm">${item.price}</p>
                             <p class="text-gray-500 text-sm">From Garden: ${item.fromGarden}</p>
                             ${item.deliveryOption ? '<p class="text-green-600 text-sm">Delivery Available</p>' : ''}
-                            ${item.cookedOption ? '<p class="text-blue-600 text-sm">Cooked Available</p>' : ''}
                         </div>
                         <button class="text-red-500 hover:text-red-700 remove-item" data-index="${index}">Remove</button>
                     `;
@@ -274,7 +265,6 @@
         veggieFilter.addEventListener('change', filterProducts);
         distanceFilter.addEventListener('change', filterProducts);
         deliveryFilter.addEventListener('change', filterProducts);
-        cookedFilter.addEventListener('change', filterProducts);
 
         viewCartBtn.addEventListener('click', () => {
             cartModal.classList.remove('hidden');
