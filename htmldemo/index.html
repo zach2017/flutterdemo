@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Harvest - Home Dashboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Bar -->
+    <nav class="bg-green-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">Garden Harvest</h1>
+            <div class="space-x-4">
+                <a href="#produce-listings" class="hover:underline">Produce Listings</a>
+                <a href="#event-listings" class="hover:underline">Event Listings</a>
+                <a href="#delivery-request" class="hover:underline">Delivery Request</a>
+                <a href="#notifications-signup" class="hover:underline">Notifications Signup</a>
+                <a href="#user-profile" class="hover:underline">User Profile</a>
+            </div>
+            <div>
+                <a href="#user-profile" class="text-white">
+                    <svg class="w-6 h-6 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Dashboard -->
+    <main class="container mx-auto mt-8 px-4">
+        <!-- Featured Produce Carousel -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-green-800 mb-4">Featured Produce</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                        <circle cx="50" cy="50" r="30" fill="red" />
+                        <polygon points="45,15 55,15 60,35 40,35" fill="green" />
+                    </svg>
+                    <h3 class="text-lg font-medium">Free Tomatoes</h3>
+                    <p class="text-gray-600">Sunny Hill Garden - 2 mi</p>
+                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Request</button>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                        <circle cx="50" cy="50" r="30" fill="crimson" />
+                        <rect x="48" y="15" width="4" height="10" fill="brown" />
+                    </svg>
+                    <h3 class="text-lg font-medium">Apples - $1/lb</h3>
+                    <p class="text-gray-600">Maple Grove - 3 mi</p>
+                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Buy</button>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                        <polygon points="50,80 40,20 60,20" fill="orange" />
+                        <rect x="45" y="10" width="10" height="10" fill="green" />
+                    </svg>
+                    <h3 class="text-lg font-medium">Organic Carrots</h3>
+                    <p class="text-gray-600">Green Patch - 1 mi</p>
+                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Request</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-semibold text-green-800 mb-4">Upcoming Events</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+                        <rect x="20" y="40" width="60" height="30" fill="lightgreen" stroke="darkgreen" stroke-width="2" />
+                        <circle cx="35" cy="55" r="5" fill="orange" />
+                        <circle cx="50" cy="55" r="5" fill="red" />
+                        <circle cx="65" cy="55" r="5" fill="yellow" />
+                    </svg>
+                    <h3 class="text-lg font-medium">Spring Veggie Feast</h3>
+                    <p class="text-gray-600">March 20, 6 PM - Maple Park</p>
+                    <p class="text-gray-500 text-sm">Menu: Carrot Soup, Garden Salad</p>
+                    <button class="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">RSVP</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
